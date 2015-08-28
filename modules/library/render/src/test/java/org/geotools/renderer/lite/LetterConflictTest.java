@@ -43,9 +43,6 @@ import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
  */
 public class LetterConflictTest extends TestCase {
 
-    private boolean SHOW_RESULT = Boolean.getBoolean("org.geotools.labelcache.showLetterConflictTestResult");
-    private boolean OUTPUT_IMAGE = Boolean.getBoolean("org.geotools.labelcache.outputLetterConflictTestResult");
-
     private static final long TIME = 5000;
     SimpleFeatureSource fs_line1;
     SimpleFeatureSource fs_line2;
@@ -100,14 +97,13 @@ public class LetterConflictTest extends TestCase {
         assertTrue("More labels in image2 than image1",
                 countPixels(image2, Color.BLACK) > countPixels(image1, Color.BLACK));
 
-        if (OUTPUT_IMAGE) {
+        if (TestData.isInteractiveTest()) {
             // Write to file
             File tmpFile = File.createTempFile("geotools", ".png");
             ImageIO.write(image1, "png", tmpFile);
             tmpFile = File.createTempFile("geotools", ".png");
             ImageIO.write(image2, "png", tmpFile);
-        }
-        if (SHOW_RESULT) {
+
             // Interactive visualization
             showImage("letterConflictEnabled false", TIME, image1);
             showImage("letterConflictEnabled true", TIME, image2);
@@ -133,14 +129,13 @@ public class LetterConflictTest extends TestCase {
         assertTrue("More labels in image2 than image1",
                 countPixels(image2, Color.BLACK) > countPixels(image1, Color.BLACK));
 
-        if (OUTPUT_IMAGE) {
+        if (TestData.isInteractiveTest()) {
             // Write to file
             File tmpFile = File.createTempFile("geotools",".png");
             ImageIO.write(image1, "png", tmpFile);
             tmpFile = File.createTempFile("geotools",".png");
             ImageIO.write(image2, "png", tmpFile);
-        }
-        if (SHOW_RESULT) {
+
             // Interactive visualization
             showImage("letterConflictEnabled false", TIME, image1);
             showImage("letterConflictEnabled true", TIME, image2);
@@ -166,14 +161,13 @@ public class LetterConflictTest extends TestCase {
         assertTrue("More labels in image2 than image1",
                 countPixels(image2, Color.BLACK) > countPixels(image1, Color.BLACK));
 
-        if (OUTPUT_IMAGE) {
+        if (TestData.isInteractiveTest()) {
             // Write to file
             File tmpFile = File.createTempFile("geotools", ".png");
             ImageIO.write(image1, "png", tmpFile);
             tmpFile = File.createTempFile("geotools", ".png");
             ImageIO.write(image2, "png", tmpFile);
-        }
-        if (SHOW_RESULT) {
+
             // Interactive visualization
             showImage("letterConflictEnabled false", TIME, image1);
             showImage("letterConflictEnabled true", TIME, image2);
@@ -220,14 +214,13 @@ public class LetterConflictTest extends TestCase {
             assertTrue("More labels in image2 than image1",
                     countDarkPixels(image2) > countDarkPixels(image1));
 
-            if (OUTPUT_IMAGE) {
+            if (TestData.isInteractiveTest()) {
                 // Write to file
                 File tmpFile = File.createTempFile("geotools", ".png");
                 ImageIO.write(image1, "png", tmpFile);
                 tmpFile = File.createTempFile("geotools", ".png");
                 ImageIO.write(image2, "png", tmpFile);
-            }
-            if (SHOW_RESULT) {
+
                 // Interactive visualization
                 showImage("letterConflictEnabled false", TIME, image1);
                 showImage("letterConflictEnabled true", TIME, image2);
